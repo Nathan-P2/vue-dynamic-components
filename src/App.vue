@@ -1,28 +1,32 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <button @click="componenteAtivo = 'Sobre'">Sobre</button>
+    <button @click="componenteAtivo = 'Servicos'">Servicos</button>
+    <button @click="componenteAtivo = 'Formulario'">Formulario</button>
+    <keep-alive>
+      <component :is="componenteAtivo"></component>
+    </keep-alive>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+import Sobre from './components/Sobre.vue'
+import Servicos from './components/Servicos.vue'
+import Formulario from './components/Formulario.vue'
+  export default {
+    components: {
+      Sobre,
+      Servicos,
+      Formulario
+    },
+    data() {
+      return {
+        componenteAtivo: ''
+      }
+    }
   }
-}
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
+
 </style>
